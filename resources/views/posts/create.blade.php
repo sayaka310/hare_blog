@@ -15,6 +15,7 @@
             </div>
         @endif --}}
 
+        {{-- <x-validation-errors :errors="$errors" type="blue" /> --}}
         <x-validation-errors :errors="$errors" />
 
         <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data"
