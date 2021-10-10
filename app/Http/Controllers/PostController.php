@@ -76,9 +76,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        return view('posts.show', compact('post'));
+        $post = Post::with(['user'])->find($id);
+        $comments = $post->comments()->latest()->get()->load(['user']);
+        return view('posts.show', compact('post', 'comments'));
     }
 
     /**
